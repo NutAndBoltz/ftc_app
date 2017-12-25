@@ -68,10 +68,10 @@ public class Blue_Alliance_WithChart extends LinearOpMode {
         arm.setPosition(Down_SERVO);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0)) {
-            telemetry.addData("a", "%02x", color_sensor.alpha());
-            telemetry.addData("r", "%02x", color_sensor.red());
-            telemetry.addData("r", "%02x", color_sensor.green());
-            telemetry.addData("r", "%02x", color_sensor.blue());
+            telemetry.addData("alpha", "%02x", color_sensor.alpha());
+            telemetry.addData("red", "%02x", color_sensor.red());
+            telemetry.addData("green", "%02x", color_sensor.green());
+            telemetry.addData("blue", "%02x", color_sensor.blue());
             telemetry.update();
         }
 
