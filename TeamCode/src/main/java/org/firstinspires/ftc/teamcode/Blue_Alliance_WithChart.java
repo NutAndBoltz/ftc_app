@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -39,20 +40,14 @@ public class Blue_Alliance_WithChart extends LinearOpMode {
         leftrear = hardwareMap.get(DcMotor.class, "motor_3");
         rightrear = hardwareMap.get(DcMotor.class, "motor_4");
 
-        leftfront.setDirection(DcMotor.Direction.FORWARD);
-        leftrear.setDirection(DcMotor.Direction.FORWARD);
-        rightfront.setDirection(DcMotor.Direction.REVERSE);
-        rightrear.setDirection(DcMotor.Direction.REVERSE);
-
-
+        leftfront.setDirection(DcMotor.Direction.REVERSE);
+        leftrear.setDirection(DcMotor.Direction.REVERSE);
+        rightfront.setDirection(DcMotor.Direction.FORWARD);
+        rightrear.setDirection(DcMotor.Direction.FORWARD);
 
         color_sensor = hardwareMap.get(ColorSensor.class, "color");
 
-        leftfront.setPower(0);
-        rightfront.setPower(0);
-        leftrear.setPower(0);
-        rightrear.setPower(0);
-
+        stopRobot();
 
         color_sensor.enableLed(false);
 
@@ -60,7 +55,6 @@ public class Blue_Alliance_WithChart extends LinearOpMode {
         rightfront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftrear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightrear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
 
         arm = hardwareMap.get(Servo.class, "servo_1");
 
@@ -83,166 +77,202 @@ public class Blue_Alliance_WithChart extends LinearOpMode {
 
         // See Color Blue as Blue Alliance, go backward
         if (color_sensor.blue() > color_sensor.red() && color_sensor.blue() >10) {
-            leftfront.setPower(DRIVE_SPEED);
-            rightfront.setPower(-DRIVE_SPEED);
-            leftrear.setPower(DRIVE_SPEED);
-            rightrear.setPower(-DRIVE_SPEED);
+            rotateRight();
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 0.25)) ;
+            while (opModeIsActive() && (runtime.seconds() < 0.05)) ;
             {
-                telemetry.addData("Turn Right Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("See Blue and rotate right", "Speed:", DRIVE_SPEED);
+                telemetry.update();
+            }
+
+            stopRobot();
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 1)) ;
+            {
+                telemetry.addData("Stop rotation", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
             arm.setPosition(Up_SERVO);
-            leftfront.setPower(0);
-            rightfront.setPower(0);
-            leftrear.setPower(0);
-            rightrear.setPower(0);
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 3)) ;
             {
-                telemetry.addData("Stop Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Lift arm", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
-            leftfront.setPower(-DRIVE_SPEED);
-            rightfront.setPower(DRIVE_SPEED);
-            leftrear.setPower(-DRIVE_SPEED);
-            rightrear.setPower(DRIVE_SPEED);
+            rotateLeft();
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 0.25)) ;
+            while (opModeIsActive() && (runtime.seconds() < 0.05)) ;
             {
-                telemetry.addData("Turn Left Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Rotate back to the left", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
-            leftfront.setPower(0);
-            rightfront.setPower(0);
-            leftrear.setPower(0);
-            rightrear.setPower(0);
+            stopRobot();
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 0.5)) ;
             {
-                telemetry.addData("Stop Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Stop rotation", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
-
-
-            leftfront.setPower(-DRIVE_SPEED);
-            rightfront.setPower(-DRIVE_SPEED);
-            leftrear.setPower(-DRIVE_SPEED);
-            rightrear.setPower(-DRIVE_SPEED);
+            driveBackward();
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1)) ;
+            while (opModeIsActive() && (runtime.seconds() < 1.5)) ;
             {
-                telemetry.addData("Moving Backward Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Move Backward", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
-            leftfront.setPower(DRIVE_SPEED);
-            rightfront.setPower(-DRIVE_SPEED);
-            leftrear.setPower(-DRIVE_SPEED);
-            rightrear.setPower(DRIVE_SPEED);
+            strafeRight();
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 0.25)) ;
             {
-                telemetry.addData("Sliding Right Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Slide Right", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
-        // See Red
+            // See Red
 
         } else if (color_sensor.red() > color_sensor.blue() && color_sensor.red() >10 ) {
-            leftfront.setPower(-DRIVE_SPEED);
-            rightfront.setPower(DRIVE_SPEED);
-            leftrear.setPower(-DRIVE_SPEED);
-            rightrear.setPower(DRIVE_SPEED);
+            rotateLeft();
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 0.25)) ;
+            while (opModeIsActive() && (runtime.seconds() < 0.05)) ;
             {
-                telemetry.addData("Turn Left Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("See red and rotate left", "Speed:", DRIVE_SPEED);
+                telemetry.update();
+            }
+
+            stopRobot();
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 1)) ;
+            {
+                telemetry.addData("Stop rotation", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
             arm.setPosition(Up_SERVO);
-            leftfront.setPower(0);
-            rightfront.setPower(0);
-            leftrear.setPower(0);
-            rightrear.setPower(0);
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 3)) ;
             {
-                telemetry.addData("Stop Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Lift arm", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
-            leftfront.setPower(DRIVE_SPEED);
-            rightfront.setPower(-DRIVE_SPEED);
-            leftrear.setPower(DRIVE_SPEED);
-            rightrear.setPower(-DRIVE_SPEED);
+            rotateRight();
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 0.25)) ;
+            while (opModeIsActive() && (runtime.seconds() < 0.05)) ;
             {
-                telemetry.addData("Turn Right Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Rotate back right", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
-            leftfront.setPower(0);
-            rightfront.setPower(0);
-            leftrear.setPower(0);
-            rightrear.setPower(0);
+            stopRobot();
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 0.5)) ;
             {
-                telemetry.addData("Stop Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Stop rotation", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
-
-
-            leftfront.setPower(-DRIVE_SPEED);
-            rightfront.setPower(-DRIVE_SPEED);
-            leftrear.setPower(-DRIVE_SPEED);
-            rightrear.setPower(-DRIVE_SPEED);
+            driveBackward();
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 1)) ;
+            while (opModeIsActive() && (runtime.seconds() < 1.5)) ;
             {
-                telemetry.addData("Moving Backward Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Move Backward", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
-            leftfront.setPower(DRIVE_SPEED);
-            rightfront.setPower(-DRIVE_SPEED);
-            leftrear.setPower(-DRIVE_SPEED);
-            rightrear.setPower(DRIVE_SPEED);
+            strafeRight();
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 0.25)) ;
             {
-                telemetry.addData("Sliding Right Sir", "Speed:", DRIVE_SPEED);
+                telemetry.addData("Slide Right", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
 
+            // If doesn't see color, begin parking
+        } else {
+            arm.setPosition(Up_SERVO);
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 3)) ;
+            {
+                telemetry.addData("Lift arm", "Speed:", DRIVE_SPEED);
+                telemetry.update();
+            }
 
+            driveBackward();
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 1.5)) ;
+            {
+                telemetry.addData("Move Backward", "Speed:", DRIVE_SPEED);
+                telemetry.update();
+            }
+
+            strafeRight();
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 0.25)) ;
+            {
+                telemetry.addData("Slide Right", "Speed:", DRIVE_SPEED);
+                telemetry.update();
+            }
         }
 
-        leftfront.setPower(0);
-        rightfront.setPower(0);
-        leftrear.setPower(0);
-        rightrear.setPower(0);
+        stopRobot();
         arm.setPosition(Up_SERVO);
 
         telemetry.addData("Congratulations!!", "Task Accomplished");
         telemetry.update();
         sleep(1000);
     }
+
+    public void stopRobot () {
+        leftfront.setPower(0);
+        rightfront.setPower(0);
+        leftrear.setPower(0);
+        rightrear.setPower(0);
+    }
+
+    public void rotateLeft () {
+        leftfront.setPower(-DRIVE_SPEED);
+        rightfront.setPower(DRIVE_SPEED);
+        leftrear.setPower(-DRIVE_SPEED);
+        rightrear.setPower(DRIVE_SPEED);
+    }
+
+    public void rotateRight () {
+        leftfront.setPower(DRIVE_SPEED);
+        rightfront.setPower(-DRIVE_SPEED);
+        leftrear.setPower(DRIVE_SPEED);
+        rightrear.setPower(-DRIVE_SPEED);
+    }
+
+    public void driveForward () {
+        leftfront.setPower(DRIVE_SPEED);
+        rightfront.setPower(DRIVE_SPEED);
+        leftrear.setPower(DRIVE_SPEED);
+        rightrear.setPower(DRIVE_SPEED);
+    }
+
+    public void driveBackward () {
+        leftfront.setPower(-DRIVE_SPEED);
+        rightfront.setPower(-DRIVE_SPEED);
+        leftrear.setPower(-DRIVE_SPEED);
+        rightrear.setPower(-DRIVE_SPEED);
+    }
+
+    public void strafeLeft () {
+        leftfront.setPower(-DRIVE_SPEED);
+        rightfront.setPower(DRIVE_SPEED);
+        leftrear.setPower(DRIVE_SPEED);
+        rightrear.setPower(-DRIVE_SPEED);
+    }
+
+    public void strafeRight () {
+        leftfront.setPower(DRIVE_SPEED);
+        rightfront.setPower(-DRIVE_SPEED);
+        leftrear.setPower(-DRIVE_SPEED);
+        rightrear.setPower(DRIVE_SPEED);
+    }
 }
-
-
-
-
-
-
-
-
