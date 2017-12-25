@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -44,10 +45,10 @@ public class MecanumWheel extends LinearOpMode {
             servo_2 = hardwareMap.get(Servo.class, "servo_2");
             servo_3 = hardwareMap.get(Servo.class, "servo_3");
 
-            leftfront.setDirection(DcMotor.Direction.FORWARD);
+            leftfront.setDirection(DcMotor.Direction.REVERSE);
+            leftrear.setDirection(DcMotor.Direction.REVERSE);
+            rightfront.setDirection(DcMotor.Direction.FORWARD);
             rightrear.setDirection(DcMotor.Direction.FORWARD);
-            rightfront.setDirection(DcMotor.Direction.REVERSE);
-            rightrear.setDirection(DcMotor.Direction.REVERSE);
             slide.setDirection(DcMotor.Direction.FORWARD);
 
 
