@@ -24,6 +24,7 @@ public class MecanumWheel extends LinearOpMode {
         private Servo servo_1 = null;
         private Servo servo_2 = null;
         private Servo servo_3 = null;
+        private Servo servo_4 = null;
 
 
 
@@ -44,6 +45,8 @@ public class MecanumWheel extends LinearOpMode {
             servo_1 = hardwareMap.get(Servo.class, "servo_1");
             servo_2 = hardwareMap.get(Servo.class, "servo_2");
             servo_3 = hardwareMap.get(Servo.class, "servo_3");
+            servo_4 = hardwareMap.get(Servo.class, "servo_4");
+
 
             leftfront.setDirection(DcMotor.Direction.REVERSE);
             leftrear.setDirection(DcMotor.Direction.REVERSE);
@@ -64,7 +67,6 @@ public class MecanumWheel extends LinearOpMode {
                 else if (gamepad2.a)
                     servo_1.setPosition(Down_SERVO);
 
-
                 if (gamepad2.x)
                     servo_2.setPosition(Up_SERVO);
 
@@ -75,6 +77,11 @@ public class MecanumWheel extends LinearOpMode {
                     servo_3.setPosition(Up_SERVO);
                 else if (gamepad2.right_bumper);
                     servo_3.setPosition(Down_SERVO);
+
+                if (gamepad1.y)
+                    servo_1.setPosition(Up_SERVO);
+                else if (gamepad1.a)
+                    servo_1.setPosition(Down_SERVO);
 
 
 
