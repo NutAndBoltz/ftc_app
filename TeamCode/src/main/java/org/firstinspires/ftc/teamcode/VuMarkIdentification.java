@@ -138,7 +138,11 @@ public class VuMarkIdentification extends LinearOpMode {
              * UNKNOWN will be returned by {@link RelicRecoveryVuMark#from(VuforiaTrackable)}.
              */
             RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+<<<<<<< HEAD
+            if (vuMark == RelicRecoveryVuMark.LEFT) {
+=======
             if (vuMark != RelicRecoveryVuMark.LEFT) {
+>>>>>>> 1072f97a1316745549be3ad1b9a5a26323613fac
 
                 /* Found an instance of the template. In the actual game, you will probably
                  * loop until this condition occurs, then move on to act accordingly depending
@@ -146,13 +150,22 @@ public class VuMarkIdentification extends LinearOpMode {
                 telemetry.addData("I SEE LEFT", "%s visible", vuMark);
                 telemetry.update();
             }
+<<<<<<< HEAD
+            else if (vuMark == RelicRecoveryVuMark.CENTER) {
+=======
             else if (vuMark != RelicRecoveryVuMark.CENTER) {
+>>>>>>> 1072f97a1316745549be3ad1b9a5a26323613fac
 
                 telemetry.addData("I SEE CENTER", "%s visible", vuMark);
                 telemetry.update();
             }
+<<<<<<< HEAD
+            else if (vuMark == RelicRecoveryVuMark.RIGHT) {
+                telemetry.addData("I SEE RIGHT", "%s visible", vuMark);
+=======
             else if (vuMark != RelicRecoveryVuMark.RIGHT) {
                 telemetry.addData("I SEE Right", "%s visible", vuMark);
+>>>>>>> 1072f97a1316745549be3ad1b9a5a26323613fac
                 telemetry.update();
             }
         }
@@ -161,6 +174,39 @@ public class VuMarkIdentification extends LinearOpMode {
                 /* For fun, we also exhibit the navigational pose. In the Relic Recovery game,
                  * it is perhaps unlikely that you will actually need to act on this pose information, but
                  * we illustrate it nevertheless, for completeness. */
+<<<<<<< HEAD
+//    OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
+//    telemetry.addData("Pose", format(pose));
+
+                /* We further illustrate how to decompose the pose into useful rotational and
+                 * translational components */
+//   if (pose != null) {
+//       VectorF trans = pose.getTranslation();
+//       Orientation rot = Orientation.getOrientation(pose, AxesReference.EXTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES);
+
+// Extract the X, Y, and Z components of the offset of the target relative to the robot
+//       double tX = trans.get(0);
+//      double tY = trans.get(1);
+//      double tZ = trans.get(2);
+
+// Extract the rotational components of the target relative to the robot
+//      double rX = rot.firstAngle;
+//      double rY = rot.secondAngle;
+//      double rZ = rot.thirdAngle;
+//     }
+//  }
+//   else {
+//      telemetry.addData("VuMark", "not visible");
+//  }
+
+
+// }
+
+//  String format(OpenGLMatrix transformationMatrix) {
+//    return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
+//  }
+//}
+=======
             //    OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
             //    telemetry.addData("Pose", format(pose));
 
@@ -192,3 +238,4 @@ public class VuMarkIdentification extends LinearOpMode {
     //    return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
   //  }
 //}
+>>>>>>> 1072f97a1316745549be3ad1b9a5a26323613fac
