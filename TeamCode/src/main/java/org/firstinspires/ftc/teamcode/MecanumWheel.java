@@ -28,7 +28,7 @@ public class MecanumWheel extends LinearOpMode {
 
 
 
-        private static final double Up_SERVO = 0;
+        private static final double Up_SERVO = 0.3;
         private static final double Down_SERVO = 1;
 
         @Override
