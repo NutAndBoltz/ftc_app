@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -40,10 +41,10 @@ public class Blue_Alliance_WithChart_WithGlyph extends LinearOpMode {
         leftrear = hardwareMap.get(DcMotor.class, "motor_3");
         rightrear = hardwareMap.get(DcMotor.class, "motor_4");
 
-        leftfront.setDirection(DcMotor.Direction.REVERSE);
-        leftrear.setDirection(DcMotor.Direction.REVERSE);
-        rightfront.setDirection(DcMotor.Direction.FORWARD);
-        rightrear.setDirection(DcMotor.Direction.FORWARD);
+        leftfront.setDirection(DcMotor.Direction.FORWARD);
+        leftrear.setDirection(DcMotor.Direction.FORWARD);
+        rightfront.setDirection(DcMotor.Direction.REVERSE);
+        rightrear.setDirection(DcMotor.Direction.REVERSE);
 
         color_sensor = hardwareMap.get(ColorSensor.class, "color");
 
