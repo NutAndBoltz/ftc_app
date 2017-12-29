@@ -29,6 +29,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.ConceptVuforiaNavigation;
@@ -64,7 +65,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  * IMPORTANT: In order to use this OpMode, you need to obtain your own Vuforia license key as
  * is explained in {@link ConceptVuforiaNavigation}.
  */
-
+//*
 @Autonomous(name="VuMarkIdentification", group ="Concept")
 public class VuMarkIdentification extends LinearOpMode {
 
@@ -138,11 +139,8 @@ public class VuMarkIdentification extends LinearOpMode {
              * UNKNOWN will be returned by {@link RelicRecoveryVuMark#from(VuforiaTrackable)}.
              */
             RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-<<<<<<< HEAD
+
             if (vuMark == RelicRecoveryVuMark.LEFT) {
-=======
-            if (vuMark != RelicRecoveryVuMark.LEFT) {
->>>>>>> 1072f97a1316745549be3ad1b9a5a26323613fac
 
                 /* Found an instance of the template. In the actual game, you will probably
                  * loop until this condition occurs, then move on to act accordingly depending
@@ -150,22 +148,13 @@ public class VuMarkIdentification extends LinearOpMode {
                 telemetry.addData("I SEE LEFT", "%s visible", vuMark);
                 telemetry.update();
             }
-<<<<<<< HEAD
             else if (vuMark == RelicRecoveryVuMark.CENTER) {
-=======
-            else if (vuMark != RelicRecoveryVuMark.CENTER) {
->>>>>>> 1072f97a1316745549be3ad1b9a5a26323613fac
 
                 telemetry.addData("I SEE CENTER", "%s visible", vuMark);
                 telemetry.update();
             }
-<<<<<<< HEAD
-            else if (vuMark == RelicRecoveryVuMark.RIGHT) {
-                telemetry.addData("I SEE RIGHT", "%s visible", vuMark);
-=======
             else if (vuMark != RelicRecoveryVuMark.RIGHT) {
                 telemetry.addData("I SEE Right", "%s visible", vuMark);
->>>>>>> 1072f97a1316745549be3ad1b9a5a26323613fac
                 telemetry.update();
             }
         }
@@ -174,7 +163,7 @@ public class VuMarkIdentification extends LinearOpMode {
                 /* For fun, we also exhibit the navigational pose. In the Relic Recovery game,
                  * it is perhaps unlikely that you will actually need to act on this pose information, but
                  * we illustrate it nevertheless, for completeness. */
-<<<<<<< HEAD
+
 //    OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
 //    telemetry.addData("Pose", format(pose));
 
@@ -206,7 +195,6 @@ public class VuMarkIdentification extends LinearOpMode {
 //    return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
 //  }
 //}
-=======
             //    OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
             //    telemetry.addData("Pose", format(pose));
 
@@ -238,4 +226,3 @@ public class VuMarkIdentification extends LinearOpMode {
     //    return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
   //  }
 //}
->>>>>>> 1072f97a1316745549be3ad1b9a5a26323613fac
