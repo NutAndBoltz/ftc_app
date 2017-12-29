@@ -24,10 +24,11 @@ public class MecanumWheel extends LinearOpMode {
         private Servo servo_1 = null;
         private Servo servo_2 = null;
         private Servo servo_3 = null;
+        private Servo servo_4 = null;
 
 
 
-        private static final double Up_SERVO = 0;
+        private static final double Up_SERVO = 0.3;
         private static final double Down_SERVO = 1;
 
         @Override
@@ -44,11 +45,13 @@ public class MecanumWheel extends LinearOpMode {
             servo_1 = hardwareMap.get(Servo.class, "servo_1");
             servo_2 = hardwareMap.get(Servo.class, "servo_2");
             servo_3 = hardwareMap.get(Servo.class, "servo_3");
+            servo_4 = hardwareMap.get(Servo.class, "servo_4");
 
-            leftfront.setDirection(DcMotor.Direction.REVERSE);
-            leftrear.setDirection(DcMotor.Direction.REVERSE);
-            rightfront.setDirection(DcMotor.Direction.FORWARD);
-            rightrear.setDirection(DcMotor.Direction.FORWARD);
+
+            leftfront.setDirection(DcMotor.Direction.FORWARD);
+            leftrear.setDirection(DcMotor.Direction.FORWARD);
+            rightfront.setDirection(DcMotor.Direction.REVERSE);
+            rightrear.setDirection(DcMotor.Direction.REVERSE);
             slide.setDirection(DcMotor.Direction.FORWARD);
 
 
@@ -64,7 +67,6 @@ public class MecanumWheel extends LinearOpMode {
                 else if (gamepad2.a)
                     servo_1.setPosition(Down_SERVO);
 
-
                 if (gamepad2.x)
                     servo_2.setPosition(Up_SERVO);
 
@@ -75,6 +77,11 @@ public class MecanumWheel extends LinearOpMode {
                     servo_3.setPosition(Up_SERVO);
                 else if (gamepad2.right_bumper);
                     servo_3.setPosition(Down_SERVO);
+
+                if (gamepad1.y)
+                    servo_1.setPosition(Up_SERVO);
+                else if (gamepad1.a)
+                    servo_1.setPosition(Down_SERVO);
 
 
 
@@ -98,10 +105,10 @@ public class MecanumWheel extends LinearOpMode {
                 horizontal = gamepad1.left_stick_x;
                 turn = gamepad1.right_stick_x;
 
-                leftfront.setPower(vertical);
-                leftrear.setPower(vertical);
-                rightfront.setPower(vertical);
-                rightrear.setPower(vertical);
+                leftfront.setPower(-vertical);
+                leftrear.setPower(-vertical);
+                rightfront.setPower(-vertical);
+                rightrear.setPower(-vertical);
 
                 leftfront.setPower(horizontal);
                 leftrear.setPower(-horizontal);
