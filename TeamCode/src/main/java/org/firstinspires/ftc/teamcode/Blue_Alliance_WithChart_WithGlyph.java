@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -12,6 +13,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 /**
  * Created by gsbol on 11/20/17.
  */
+@Disabled
 @Autonomous(name="Blue_Alliance_WithChart_WithGlyph", group="Wang")
 public class Blue_Alliance_WithChart_WithGlyph extends LinearOpMode {
 
