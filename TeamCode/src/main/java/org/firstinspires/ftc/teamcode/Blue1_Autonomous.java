@@ -70,8 +70,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  * is explained in {@link ConceptVuforiaNavigation}.
  */
 
-@Autonomous(name="Vuforia_Encoder_Autonomous", group ="Concept")
-public class Vuforia_Encoder_Autonomous extends LinearOpMode {
+@Autonomous(name="Blue1_Autonomous", group ="Concept")
+public class Blue1_Autonomous extends LinearOpMode {
 
     public static final String TAG = "Vuforia VuMark Sample";
 
