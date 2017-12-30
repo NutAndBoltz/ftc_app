@@ -170,8 +170,9 @@ public class Blue1_Autonomous extends LinearOpMode {
             knockJewel();
 
 
-                RelicRecoveryVuMark vuMark=RelicRecoveryVuMark.from(relicTemplate);
-                if(vuMark!=RelicRecoveryVuMark.LEFT){
+            RelicRecoveryVuMark vuMark=RelicRecoveryVuMark.from(relicTemplate);
+
+            if(vuMark!=RelicRecoveryVuMark.LEFT){
 
                     parkRobotLeft();
                     telemetry.addData("I SEE LEFT","%s visible",vuMark);
@@ -179,14 +180,14 @@ public class Blue1_Autonomous extends LinearOpMode {
                 }
 
 
-                else if(vuMark!=RelicRecoveryVuMark.CENTER){
+            else if(vuMark!=RelicRecoveryVuMark.CENTER){
                     parkRobotCenter();
                     telemetry.addData("I SEE CENTER","%s visible",vuMark);
                     telemetry.update();
                 }
 
 
-                else if(vuMark!=RelicRecoveryVuMark.RIGHT){
+            else if(vuMark!=RelicRecoveryVuMark.RIGHT){
                     parkRobotRight();
                     telemetry.addData("I SEE Right","%s visible",vuMark);
                     telemetry.update();
@@ -210,8 +211,8 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
         if (color_sensor.blue() > color_sensor.red() && color_sensor.blue() > 10) {
-            rotateRightDegrees(Degree_Turned_Jewel);
 
+            rotateRightDegrees(Degree_Turned_Jewel);
 
             stopRobot();
             runtime.reset();
@@ -230,7 +231,6 @@ public class Blue1_Autonomous extends LinearOpMode {
             }
 
             rotateLeftDegrees(Degree_Turned_Jewel);
-
 
             stopRobot();
             runtime.reset();
@@ -244,8 +244,8 @@ public class Blue1_Autonomous extends LinearOpMode {
             // See Red
 
         } else if (color_sensor.red() > color_sensor.blue() && color_sensor.red() > 10) {
-            rotateLeftDegrees(Degree_Turned_Jewel);
 
+            rotateLeftDegrees(Degree_Turned_Jewel);
 
             stopRobot();
             runtime.reset();
@@ -274,7 +274,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             }
 
 
-            // If doesn't see color, begin parking
+            // If doesn't see color, lift arm
         } else {
             arm.setPosition(Up_SERVO);
             runtime.reset();
@@ -283,7 +283,6 @@ public class Blue1_Autonomous extends LinearOpMode {
                 telemetry.addData("Lift arm", "Speed:", DRIVE_SPEED);
                 telemetry.update();
             }
-
 
         }
 
@@ -294,13 +293,6 @@ public class Blue1_Autonomous extends LinearOpMode {
         telemetry.update();
         sleep(1000);
     }
-
-
-
-
-
-
-
 
 
     public void parkRobotLeft() {
@@ -528,6 +520,15 @@ public class Blue1_Autonomous extends LinearOpMode {
                 telemetry.update();
 
             }
+
+            // Stop all motion;
+            stopRobot();
+
+            // Turn off RUN_TO_POSITION
+            leftfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            leftrear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightrear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         }
     }
 
@@ -579,6 +580,16 @@ public class Blue1_Autonomous extends LinearOpMode {
                 telemetry.update();
 
             }
+
+            // Stop all motion;
+            stopRobot();
+
+            // Turn off RUN_TO_POSITION
+            leftfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            leftrear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightrear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         }
     }
 
@@ -632,6 +643,16 @@ public class Blue1_Autonomous extends LinearOpMode {
                 telemetry.update();
 
             }
+
+            // Stop all motion;
+            stopRobot();
+
+            // Turn off RUN_TO_POSITION
+            leftfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            leftrear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightrear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         }
     }
 
@@ -684,6 +705,16 @@ public class Blue1_Autonomous extends LinearOpMode {
                 telemetry.update();
 
             }
+
+            // Stop all motion;
+            stopRobot();
+
+            // Turn off RUN_TO_POSITION
+            leftfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            leftrear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightrear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         }
     }
 }
