@@ -30,6 +30,9 @@ public class MecanumWheel extends LinearOpMode {
 
         private static final double Up_SERVO = 0.3;
         private static final double Down_SERVO = 1;
+        private static final double WRIST_START = 1;
+        private static final double GRABBER_START = 1;
+        private static final double    SERVO_SPEED      = 0.01 ;
 
         @Override
         public void runOpMode() {
@@ -54,6 +57,9 @@ public class MecanumWheel extends LinearOpMode {
             rightrear.setDirection(DcMotor.Direction.REVERSE);
             slide.setDirection(DcMotor.Direction.FORWARD);
 
+            servo_2.setPosition(WRIST_START);
+            servo_3.setPosition(GRABBER_START);
+
 
             waitForStart();
             runtime.reset();
@@ -62,26 +68,35 @@ public class MecanumWheel extends LinearOpMode {
             while (opModeIsActive()) {
 
 
-                if (gamepad2.y)
+                if (gamepad1.y) {
                     servo_1.setPosition(Up_SERVO);
-                else if (gamepad2.a)
+                }
+                else if (gamepad1.a) {
                     servo_1.setPosition(Down_SERVO);
+                }
 
-                if (gamepad2.x)
-                    servo_2.setPosition(Up_SERVO);
+                if (gamepad2.y) {
+                    servo_2.setPosition(servo_2.getPosition() + SERVO_SPEED);
 
-                else if (gamepad2.b)
-                    servo_2.setPosition(Down_SERVO);
+                }
 
-                if (gamepad2.left_bumper)
-                    servo_3.setPosition(Up_SERVO);
-                else if (gamepad2.right_bumper);
-                    servo_3.setPosition(Down_SERVO);
+                else if (gamepad2.a) {
+                    servo_2.setPosition(servo_2.getPosition() - SERVO_SPEED);
+                }
 
-                if (gamepad1.y)
+                if (gamepad2.left_bumper) {
+                    servo_3.setPosition(servo_3.getPosition() + SERVO_SPEED);;
+                }
+                else if (gamepad2.right_bumper) {
+                    servo_3.setPosition(servo_3.getPosition() - SERVO_SPEED);
+                }
+
+                if (gamepad1.y) {
                     servo_1.setPosition(Up_SERVO);
-                else if (gamepad1.a)
+                }
+                else if (gamepad1.a) {
                     servo_1.setPosition(Down_SERVO);
+                }
 
 
 

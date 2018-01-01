@@ -84,7 +84,7 @@ public class Blue1_Autonomous extends LinearOpMode {
     static final double WHEEL_DIAMETER_INCHES = 4.0;     // For figuring circumference
     static final double COUNTS_PER_INCH = COUNTS_PER_MOTOR_REV / (WHEEL_DIAMETER_INCHES * 3.1415);
 
-    static final double Counts_PER_DegreeTurn = 50;
+    static final double Counts_PER_DegreeTurn = 24;
 
     ColorSensor color_sensor;
     DcMotor leftfront = null;
@@ -107,7 +107,8 @@ public class Blue1_Autonomous extends LinearOpMode {
     @Override
     public void runOpMode() {
 
-
+        //int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        //VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
 
         parameters.vuforiaLicenseKey = "AasdOY7/////AAAAmWVwx3oX3E9loWJNt07NJG80am5QdXfkxeve92eE1sLMQsmNNNkRsZyfC2kxic4bvjB36VlDNWoy3K62OvPZRaxo2bWJy9Nkg40o5el4/HYUF8C1u971N34RrHn5lXOnOC7SSQxy/rK2SkFMqFm1YiU/W5QmVxQyAgjp2o8kZD7QSjqke2vZfqMXLr40hl0xh1K5njXdqaD2x4mAQncm5rSOS0qgiiQjNPuMjt95jKqDQuvoa+2RA9cujfg0Ug52PRA2Un4jjpJGhV/upyxFdEworP7AkhTmCuOJihqDlyyvU+khdSOZc1sIq0NKpozR28j3L3jGEy47ntA9GSYgELUMjAOd9XL3DnQRHVlZlmKN";
@@ -172,28 +173,48 @@ public class Blue1_Autonomous extends LinearOpMode {
 
             RelicRecoveryVuMark vuMark=RelicRecoveryVuMark.from(relicTemplate);
 
-            if(vuMark!=RelicRecoveryVuMark.LEFT){
-
-                    parkRobotLeft();
+            if(vuMark == RelicRecoveryVuMark.LEFT){
+                runtime.reset();
+                while (opModeIsActive() && (runtime.seconds() < 1))
+                {
                     telemetry.addData("I SEE LEFT","%s visible",vuMark);
                     telemetry.update();
                 }
 
 
-            else if(vuMark!=RelicRecoveryVuMark.CENTER){
+                    parkRobotLeft();
+                }
+
+
+            else if(vuMark == RelicRecoveryVuMark.CENTER){
+                runtime.reset();
+                while (opModeIsActive() && (runtime.seconds() < 1)) {
+                    telemetry.addData("I SEE CENTER", "%s visible", vuMark);
+                    telemetry.update();
+                }
                     parkRobotCenter();
-                    telemetry.addData("I SEE CENTER","%s visible",vuMark);
+            }
+
+
+            else if(vuMark == RelicRecoveryVuMark.RIGHT){
+                runtime.reset();
+                while (opModeIsActive() && (runtime.seconds() < 1)) {
+                    telemetry.addData("I SEE RIGHT", "%s visible", vuMark);
                     telemetry.update();
                 }
 
-
-            else if(vuMark!=RelicRecoveryVuMark.RIGHT){
                     parkRobotRight();
-                    telemetry.addData("I SEE Right","%s visible",vuMark);
+            }
+
+            else {
+                runtime.reset();
+                while (opModeIsActive() && (runtime.seconds() < 1)) {
+                    telemetry.addData("I SEE NOTHING", "%s visible", vuMark);
                     telemetry.update();
                 }
 
-
+                parkRobotCenter();
+            }
 
         }
     }
@@ -296,7 +317,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
 
     public void parkRobotLeft() {
-        driveBackward(29);
+        driveBackward(21);
 
 
         stopRobot();
@@ -318,7 +339,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveBackward(20);
+        //driveBackward(20);
 
 
         stopRobot();
@@ -352,7 +373,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
 
     public void parkRobotCenter() {
-        driveBackward(36);
+        driveBackward(28);
 
 
         stopRobot();
@@ -374,7 +395,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveBackward(20);
+        //driveBackward(20);
 
 
         stopRobot();
@@ -409,7 +430,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
 
     public void parkRobotRight() {
-        driveBackward(43);
+        driveBackward(35);
 
 
         stopRobot();
@@ -431,7 +452,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveBackward(20);
+        //driveBackward(20);
 
 
         stopRobot();
