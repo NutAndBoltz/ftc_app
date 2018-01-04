@@ -98,7 +98,7 @@ public class Blue1_Autonomous extends LinearOpMode {
     public static final double Down_SERVO = 1;
     public static final double Up_SERVO = 0.3;
     public static final double START_SERVO = 0.3;
-    public static final int Degree_Turned_Jewel = 20;
+    public static final int Degree_Turned_Jewel = 10;
 
     HardwareMap hwMap = null;
     private ElapsedTime runtime = new ElapsedTime();
@@ -317,6 +317,62 @@ public class Blue1_Autonomous extends LinearOpMode {
 
 
     public void parkRobotLeft() {
+        driveBackward(13);
+
+
+        stopRobot();
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1)) ;
+        {
+            telemetry.addData("Pause", "Speed:", DRIVE_SPEED);
+            telemetry.update();
+        }
+
+        rotateRightDegrees(90);
+
+
+        stopRobot();
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1)) ;
+        {
+            telemetry.addData("Pause", "Speed:", DRIVE_SPEED);
+            telemetry.update();
+        }
+
+        //driveBackward(20);
+
+
+        stopRobot();
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) ;
+        {
+            telemetry.addData("Pause", "Speed:", DRIVE_SPEED);
+            telemetry.update();
+        }
+
+        glyphArm.setPosition(Up_SERVO);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
+            telemetry.addData("Push glyph", "Speed:", DRIVE_SPEED);
+            telemetry.update();
+        }
+
+        driveForward(8);
+
+
+        stopRobot();
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1)) ;
+        {
+            telemetry.addData("Pause", "Speed:", DRIVE_SPEED);
+            telemetry.update();
+        }
+
+        driveBackward(3);
+    }
+
+
+    public void parkRobotCenter() {
         driveBackward(21);
 
 
@@ -357,7 +413,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveForward(10);
+        driveForward(8);
 
 
         stopRobot();
@@ -368,11 +424,12 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveBackward(5);
+        driveBackward(3);
+
     }
 
 
-    public void parkRobotCenter() {
+    public void parkRobotRight() {
         driveBackward(28);
 
 
@@ -413,7 +470,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveForward(10);
+        driveForward(8);
 
 
         stopRobot();
@@ -424,64 +481,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveBackward(5);
-
-    }
-
-
-    public void parkRobotRight() {
-        driveBackward(35);
-
-
-        stopRobot();
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1)) ;
-        {
-            telemetry.addData("Pause", "Speed:", DRIVE_SPEED);
-            telemetry.update();
-        }
-
-        rotateRightDegrees(90);
-
-
-        stopRobot();
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1)) ;
-        {
-            telemetry.addData("Pause", "Speed:", DRIVE_SPEED);
-            telemetry.update();
-        }
-
-        //driveBackward(20);
-
-
-        stopRobot();
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 0.5)) ;
-        {
-            telemetry.addData("Pause", "Speed:", DRIVE_SPEED);
-            telemetry.update();
-        }
-
-        glyphArm.setPosition(Up_SERVO);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
-            telemetry.addData("Push glyph", "Speed:", DRIVE_SPEED);
-            telemetry.update();
-        }
-
-        driveForward(10);
-
-
-        stopRobot();
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1)) ;
-        {
-            telemetry.addData("Pause", "Speed:", DRIVE_SPEED);
-            telemetry.update();
-        }
-
-        driveBackward(5);
+        driveBackward(3);
 
     }
 
