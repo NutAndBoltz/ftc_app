@@ -317,7 +317,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
 
     public void parkRobotLeft() {
-        driveBackward(13);
+        driveBackward(21);
 
 
         stopRobot();
@@ -328,7 +328,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        rotateRightDegrees(90);
+        rotateRightDegrees(50);
 
 
         stopRobot();
@@ -384,7 +384,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        rotateRightDegrees(90);
+        rotateRightDegrees(70);
 
 
         stopRobot();
@@ -430,7 +430,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
 
     public void parkRobotRight() {
-        driveBackward(28);
+        driveBackward(21);
 
 
         stopRobot();
@@ -441,7 +441,7 @@ public class Blue1_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        rotateRightDegrees(90);
+        rotateRightDegrees(95);
 
 
         stopRobot();

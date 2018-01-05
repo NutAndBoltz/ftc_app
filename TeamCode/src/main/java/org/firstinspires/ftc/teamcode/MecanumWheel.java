@@ -84,10 +84,10 @@ public class MecanumWheel extends LinearOpMode {
                     servo_2.setPosition(servo_2.getPosition() - SERVO_SPEED);
                 }
 
-                if (gamepad2.left_bumper) {
+                if (gamepad2.x) {
                     servo_3.setPosition(servo_3.getPosition() + SERVO_SPEED);;
                 }
-                else if (gamepad2.right_bumper) {
+                else if (gamepad2.b) {
                     servo_3.setPosition(servo_3.getPosition() - SERVO_SPEED);
                 }
 
