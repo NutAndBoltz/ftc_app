@@ -51,10 +51,10 @@ public class MecanumWheel extends LinearOpMode {
             servo_4 = hardwareMap.get(Servo.class, "servo_4");
 
 
-            leftfront.setDirection(DcMotor.Direction.FORWARD);
-            leftrear.setDirection(DcMotor.Direction.FORWARD);
-            rightfront.setDirection(DcMotor.Direction.REVERSE);
-            rightrear.setDirection(DcMotor.Direction.REVERSE);
+            leftfront.setDirection(DcMotor.Direction.REVERSE);
+            leftrear.setDirection(DcMotor.Direction.REVERSE);
+            rightfront.setDirection(DcMotor.Direction.FORWARD);
+            rightrear.setDirection(DcMotor.Direction.FORWARD);
             slide.setDirection(DcMotor.Direction.FORWARD);
 
             servo_2.setPosition(WRIST_START);
@@ -130,10 +130,10 @@ public class MecanumWheel extends LinearOpMode {
                 rightfront.setPower(-horizontal);
                 rightrear.setPower(horizontal);
 
-                leftfront.setPower(turn);
-                leftrear.setPower(turn);
-                rightfront.setPower(-turn);
-                rightrear.setPower(-turn);
+                leftfront.setPower(-turn);
+                leftrear.setPower(-turn);
+                rightfront.setPower(turn);
+                rightrear.setPower(turn);
 
 
 
