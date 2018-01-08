@@ -92,7 +92,7 @@ public class Red2_Autonomous extends LinearOpMode {
     public static final double Down_SERVO = 1;
     public static final double Up_SERVO = 0.3;
     public static final double START_SERVO = 0.3;
-    public static final int Degree_Turned_Jewel = 10;
+    public static final int Degree_Turned_Jewel = 13;
 
     HardwareMap hwMap = null;
     private ElapsedTime runtime = new ElapsedTime();
