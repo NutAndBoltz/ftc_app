@@ -311,7 +311,7 @@ public class Red2_Autonomous extends LinearOpMode {
 
 
     public void parkRobotLeft() {
-        driveBackward(21);
+        driveForward(14);
 
 
         stopRobot();
@@ -322,7 +322,7 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        rotateRightDegrees(50);
+        rotateLeftDegrees(80);
 
 
         stopRobot();
@@ -333,8 +333,9 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        //driveBackward(20);
+        driveForward(13);
 
+        rotateRightDegrees(80);
 
         stopRobot();
         runtime.reset();
@@ -351,7 +352,7 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveForward(8);
+        driveForward(4);
 
 
         stopRobot();
@@ -362,12 +363,12 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveBackward(3);
+        driveBackward(4);
     }
 
 
     public void parkRobotCenter() {
-        driveBackward(21);
+        driveForward(14);
 
 
         stopRobot();
@@ -378,7 +379,7 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        rotateRightDegrees(70);
+        rotateLeftDegrees(80);
 
 
         stopRobot();
@@ -389,8 +390,9 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        //driveBackward(20);
+        driveForward(8);
 
+        rotateRightDegrees(80);
 
         stopRobot();
         runtime.reset();
@@ -407,7 +409,7 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveForward(8);
+        driveForward(4);
 
 
         stopRobot();
@@ -418,13 +420,11 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveBackward(3);
-
+        driveBackward(4);
     }
 
-
     public void parkRobotRight() {
-        driveBackward(21);
+        driveForward(14);
 
 
         stopRobot();
@@ -435,7 +435,7 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        rotateRightDegrees(95);
+        rotateLeftDegrees(80);
 
 
         stopRobot();
@@ -446,8 +446,9 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        //driveBackward(20);
+        driveForward(3);
 
+        rotateRightDegrees(80);
 
         stopRobot();
         runtime.reset();
@@ -464,7 +465,7 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveForward(8);
+        driveForward(4);
 
 
         stopRobot();
@@ -475,8 +476,7 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveBackward(3);
-
+        driveBackward(4);
     }
 
     public void stopRobot () {
