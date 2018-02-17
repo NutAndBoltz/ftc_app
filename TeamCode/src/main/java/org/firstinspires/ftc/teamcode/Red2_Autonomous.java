@@ -29,6 +29,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -65,6 +66,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  */
 
 @Autonomous(name="Red2_Autonomous", group ="Concept")
+@Disabled
 public class Red2_Autonomous extends LinearOpMode {
 
     public static final String TAG = "Vuforia VuMark Sample";
@@ -150,7 +152,7 @@ public class Red2_Autonomous extends LinearOpMode {
         arm = hardwareMap.get(Servo.class, "servo_1");
         glyphArm = hardwareMap.get(Servo.class, "servo_4");
 
-        arm.setPosition(START_SERVO);
+        arm.setPosition(0.7);
         glyphArm.setPosition(Down_SERVO);
 
         telemetry.addData("Status", "Ready to run");
@@ -216,7 +218,7 @@ public class Red2_Autonomous extends LinearOpMode {
 
     public void knockJewel() {
 
-        arm.setPosition(Down_SERVO);
+        arm.setPosition(0);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0)) {
             telemetry.addData("alpha", "%02x", color_sensor.alpha());
@@ -237,7 +239,7 @@ public class Red2_Autonomous extends LinearOpMode {
                 telemetry.update();
             }
 
-            arm.setPosition(Up_SERVO);
+            arm.setPosition(0.8);
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 3)) ;
             {
@@ -270,7 +272,7 @@ public class Red2_Autonomous extends LinearOpMode {
                 telemetry.update();
             }
 
-            arm.setPosition(Up_SERVO);
+            arm.setPosition(0.8);
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 3)) ;
             {
@@ -291,7 +293,7 @@ public class Red2_Autonomous extends LinearOpMode {
 
             // If doesn't see color, lift arm
         } else {
-            arm.setPosition(Up_SERVO);
+            arm.setPosition(0.8);
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 3)) ;
             {
@@ -302,7 +304,7 @@ public class Red2_Autonomous extends LinearOpMode {
         }
 
         stopRobot();
-        arm.setPosition(Up_SERVO);
+        arm.setPosition(0.8);
 
         telemetry.addData("Congratulations!!", "Task Accomplished");
         telemetry.update();
@@ -446,7 +448,7 @@ public class Red2_Autonomous extends LinearOpMode {
             telemetry.update();
         }
 
-        driveForward(3);
+        driveForward(5);
 
         rotateRightDegrees(80);
 

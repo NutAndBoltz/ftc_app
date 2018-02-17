@@ -29,6 +29,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -71,6 +72,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  */
 
 @Autonomous(name="Blue1_Autonomous", group ="Concept")
+@Disabled
 public class Blue1_Autonomous extends LinearOpMode {
 
     public static final String TAG = "Vuforia VuMark Sample";
@@ -156,7 +158,7 @@ public class Blue1_Autonomous extends LinearOpMode {
         arm = hardwareMap.get(Servo.class, "servo_1");
         glyphArm = hardwareMap.get(Servo.class, "servo_4");
 
-        arm.setPosition(START_SERVO);
+        arm.setPosition(0.7);
         glyphArm.setPosition(Down_SERVO);
 
         telemetry.addData("Status", "Ready to run");
@@ -222,7 +224,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
     public void knockJewel() {
 
-        arm.setPosition(Down_SERVO);
+        arm.setPosition(0);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0)) {
             telemetry.addData("alpha", "%02x", color_sensor.alpha());
@@ -243,7 +245,7 @@ public class Blue1_Autonomous extends LinearOpMode {
                 telemetry.update();
             }
 
-            arm.setPosition(Up_SERVO);
+            arm.setPosition(0.8);
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 3)) ;
             {
@@ -276,7 +278,7 @@ public class Blue1_Autonomous extends LinearOpMode {
                 telemetry.update();
             }
 
-            arm.setPosition(Up_SERVO);
+            arm.setPosition(0.8);
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 3)) ;
             {
@@ -297,7 +299,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
             // If doesn't see color, lift arm
         } else {
-            arm.setPosition(Up_SERVO);
+            arm.setPosition(0.8);
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 3)) ;
             {
@@ -308,7 +310,7 @@ public class Blue1_Autonomous extends LinearOpMode {
         }
 
         stopRobot();
-        arm.setPosition(Up_SERVO);
+        arm.setPosition(0.8);
 
         telemetry.addData("Congratulations!!", "Task Accomplished");
         telemetry.update();
@@ -317,7 +319,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
 
     public void parkRobotLeft() {
-        driveBackward(15);
+        driveBackward(13);
 
 
         stopRobot();
@@ -373,7 +375,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
 
     public void parkRobotCenter() {
-        driveBackward(19);
+        driveBackward(17);
 
 
         stopRobot();
@@ -430,7 +432,7 @@ public class Blue1_Autonomous extends LinearOpMode {
 
 
     public void parkRobotRight() {
-        driveBackward(22);
+        driveBackward(19);
 
 
         stopRobot();
