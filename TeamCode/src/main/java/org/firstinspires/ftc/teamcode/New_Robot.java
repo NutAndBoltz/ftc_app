@@ -4,7 +4,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -22,23 +21,29 @@ public class New_Robot extends LinearOpMode {
     private DcMotor rightfront = null;
     private DcMotor leftrear = null;
     private DcMotor rightrear = null;
+    private DcMotor glyphleft = null;
+    private DcMotor glyphright = null;
     private DcMotor slide = null;
-    private DcMotor glyph = null;
-    private Servo servo_1 = null;
-    private Servo servo_2 = null;
-    private Servo servo_3 = null;
-    private Servo servo_5 = null;
-    private Servo servo_6 = null;
-    private Servo servo_4 = null;
 
-    private static final double Up_SERVO = 0.35;
-    private static final double Down_SERVO = 1;
-    private static final double WRIST_START = 0.8;
-    private static final double GRABBER_START = 0.8;
-    private static final double SERVO_5_START = 0.9;
-    private static final double SERVO_6_START = 0.1;
-    private static final double SERVO_SPEED      = 0.01 ;
-    private static final double SERVO_SPEED2      = 0.02 ;
+    private Servo colorArm1 = null;
+    private Servo colorArm2 = null;
+    private Servo glyphFlipper = null;
+    private Servo glyphStopper = null;
+    private Servo elbow = null;
+    private Servo claw = null;
+
+    private static final double Straight_colorArm1 = 0.35;
+    private static final double Up_colorArm2 = .9;
+    private static final double Down_colorArm2 = .35;
+    private static final double Up_glyphFlipper = 1;
+    private static final double Down_glyphFlipper = 0;
+    private static final double Up_glyphStopper = 1;
+    private static final double Down_glyphStoppper = 0;
+    private static final double Up_elbow = 0;
+    private static final double Down_elbow = 0.9;
+    private static final double Open_claw = 1;
+    private static final double Closed_claw = 0.35;
+
     private double number = 1;
 
     @Override
@@ -50,24 +55,32 @@ public class New_Robot extends LinearOpMode {
         rightfront = hardwareMap.get(DcMotor.class, "motor_2");
         leftrear = hardwareMap.get(DcMotor.class, "motor_3");
         rightrear= hardwareMap.get(DcMotor.class, "motor_4");
-        slide = hardwareMap.get(DcMotor.class,"motor_5");
-        glyph = hardwareMap.get(DcMotor.class,"motor_6");
-        servo_1 = hardwareMap.get(Servo.class, "servo_1");
-        servo_2 = hardwareMap.get(Servo.class, "servo_2");
-        servo_3 = hardwareMap.get(Servo.class, "servo_3");
-        servo_4 = hardwareMap.get(Servo.class, "servo_4");
+        glyphleft = hardwareMap.get(DcMotor.class,"motor_5");
+        glyphright = hardwareMap.get(DcMotor.class,"motor_6");
+        slide = hardwareMap.get(DcMotor.class,"motor_7");
 
+        colorArm1 = hardwareMap.get(Servo.class, "servo_1");
+        colorArm2 = hardwareMap.get(Servo.class, "servo_2");
+        glyphFlipper = hardwareMap.get(Servo.class, "servo_3");
+        glyphStopper = hardwareMap.get(Servo.class, "servo_4");
+        elbow = hardwareMap.get(Servo.class, "servo_5");
+        claw = hardwareMap.get(Servo.class, "servo_6");
 
 
         leftfront.setDirection(DcMotor.Direction.REVERSE);
         leftrear.setDirection(DcMotor.Direction.REVERSE);
         rightfront.setDirection(DcMotor.Direction.FORWARD);
         rightrear.setDirection(DcMotor.Direction.FORWARD);
-        slide.setDirection(DcMotor.Direction.FORWARD);
-        glyph.setDirection(DcMotor.Direction.REVERSE);
+        glyphleft.setDirection(DcMotor.Direction.FORWARD);
+        glyphright.setDirection(DcMotor.Direction.REVERSE);
 
-        servo_2.setPosition(WRIST_START);
-        servo_3.setPosition(GRABBER_START);
+        //initialize servo positions
+        colorArm1.setPosition(Straight_colorArm1);
+        colorArm2.setPosition(Up_colorArm2);
+        glyphFlipper.setPosition(Down_glyphFlipper);
+        glyphStopper.setPosition(Down_glyphStoppper);
+        elbow.setPosition(Up_elbow);
+        claw.setPosition(Closed_claw);
 
 
         waitForStart();
@@ -77,32 +90,39 @@ public class New_Robot extends LinearOpMode {
         while (opModeIsActive()) {
 
 
-
-            if (gamepad2.y && servo_2.getPosition() <1) {
-                servo_2.setPosition(servo_2.getPosition() + SERVO_SPEED);
+            if (gamepad1.y) {
+                colorArm2.setPosition(Up_colorArm2);
+            }
+            else if (gamepad1.a) {
+                colorArm2.setPosition(Down_colorArm2);
             }
 
-
-
-            else if (gamepad2.a && servo_2.getPosition() >0) {
-                servo_2.setPosition(servo_2.getPosition() - SERVO_SPEED);
+            if (gamepad2.y) {
+                glyphFlipper.setPosition(Up_glyphFlipper);
+            }
+            else if (gamepad2.a) {
+                glyphFlipper.setPosition(Down_glyphFlipper);
             }
 
-            if (gamepad2.x && servo_3.getPosition() <1) {
-                servo_3.setPosition(servo_3.getPosition() + SERVO_SPEED);
+            if (gamepad2.b) {
+                glyphStopper.setPosition(Up_glyphStopper);
+            }
+            else if (gamepad2.x) {
+                glyphStopper.setPosition(Down_glyphStoppper);
             }
 
-            else if (gamepad2.b && servo_3.getPosition() >0) {
-                servo_3.setPosition(servo_3.getPosition() - SERVO_SPEED);
+            if (gamepad2.dpad_right) {
+                elbow.setPosition(Down_elbow);
+            }
+            else if (gamepad2.dpad_left) {
+                elbow.setPosition(Up_elbow);
             }
 
-
-            if (gamepad2.right_bumper) {
-                servo_4.setPosition(1);
+            if (gamepad2.dpad_up) {
+                claw.setPosition(Open_claw);
             }
-
-            else if (gamepad2.left_bumper) {
-                servo_4.setPosition(0);
+            else if (gamepad2.dpad_down) {
+                claw.setPosition(Closed_claw);
             }
 
 
@@ -127,32 +147,29 @@ public class New_Robot extends LinearOpMode {
             }
 
 
-            leftfront.setPower(-vertical*number);
-            leftrear.setPower(-vertical * number);
-            rightfront.setPower(-vertical * number);
-            rightrear.setPower(-vertical * number);
+            leftfront.setPower(vertical*number);
+            leftrear.setPower(vertical * number);
+            rightfront.setPower(vertical * number);
+            rightrear.setPower(vertical * number);
 
-            leftfront.setPower(horizontal * number);
-            leftrear.setPower(-horizontal * number);
-            rightfront.setPower(-horizontal * number);
-            rightrear.setPower(horizontal * number);
+            leftfront.setPower(-horizontal * number);
+            leftrear.setPower(horizontal * number);
+            rightfront.setPower(horizontal * number);
+            rightrear.setPower(-horizontal * number);
 
-            leftfront.setPower(-turn * number);
-            leftrear.setPower(-turn * number);
-            rightfront.setPower(turn * number);
-            rightrear.setPower(turn * number);
+            leftfront.setPower(turn * number);
+            leftrear.setPower(turn * number);
+            rightfront.setPower(-turn * number);
+            rightrear.setPower(-turn * number);
 
             double up;
-
             up = gamepad2.left_stick_y;
+            glyphleft.setPower(up);
+            glyphright.setPower(up);
 
-            slide.setPower(up);
-
-            double system;
-
-            system = gamepad2.left_stick_y;
-
-            glyph.setPower(system);
+            double slidePower;
+            slidePower = gamepad2.right_stick_y;
+            slide.setPower(slidePower);
 
 
             telemetry.addData("Status", "Run Time: " + runtime.toString());
