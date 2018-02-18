@@ -112,10 +112,10 @@ public class New_Robot extends LinearOpMode {
             }
 
             if (gamepad2.dpad_right) {
-                elbow.setPosition(Down_elbow);
+                elbow.setPosition(elbow.getPosition() + 0.2);
             }
             else if (gamepad2.dpad_left) {
-                elbow.setPosition(Up_elbow);
+                elbow.setPosition(elbow.getPosition() - 0.2);
             }
 
             if (gamepad2.dpad_up) {
@@ -124,6 +124,8 @@ public class New_Robot extends LinearOpMode {
             else if (gamepad2.dpad_down) {
                 claw.setPosition(Closed_claw);
             }
+
+
 
 
             double vertical;
