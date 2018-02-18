@@ -155,9 +155,9 @@ public class New_Robot extends LinearOpMode {
             rightrear.setPower(vertical * number);
 
             leftfront.setPower(-horizontal * number);
-            leftrear.setPower(horizontal * number);
+            leftrear.setPower(horizontal * number*0.8);
             rightfront.setPower(horizontal * number);
-            rightrear.setPower(-horizontal * number);
+            rightrear.setPower(-horizontal * number*0.8);
 
             leftfront.setPower(turn * number);
             leftrear.setPower(turn * number);
